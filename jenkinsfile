@@ -37,12 +37,13 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
      steps {
         script {
           sh 'cd /opt/jenkins/workspace/session815-pipeline/my-app ; mvn clean'
-        }
-      }
+              }
+           }
 
-     }
+        }
 
   }
 
 
+}
 }

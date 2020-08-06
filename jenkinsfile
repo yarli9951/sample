@@ -8,7 +8,7 @@ booleanParam(name: 'checkout', defaultValue: true, description: '')
 booleanParam(name: 'build', defaultValue: true, description: '')
 choice(name: 'VERSION', choices: ['1.1', '1.2', '2.0'], description: '')
 string(name: 'Ticket_no', defaultValue: 'staging', description: '')
-booleanParam(name: 'non-regression', defaultValue: true, description: '')
+booleanParam(name: 'nonregression', defaultValue: true, description: '')
 
 }
   stages {
@@ -41,10 +41,10 @@ booleanParam(name: 'non-regression', defaultValue: true, description: '')
 
         }
 
-        stage ('Non-regression')
+        stage ('non-regression')
         {
              when {
-                 expression {  non-regression ==~ true }
+                 expression { nonregression ==~ true }
 
                  }
 

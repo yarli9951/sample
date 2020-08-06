@@ -1,0 +1,35 @@
+pipeline
+{
+  agent any
+
+parameters {
+
+booleanParam(name: 'checkout', defaultValue: true, description: '')
+choice(name: 'VERSION', choices: ['1.1', '1.2', '2.0'], description: '')
+string(name: 'Ticket_no', defaultValue: 'staging', description: '')
+
+}
+  stages {
+
+
+     stage ('checkout')
+     {
+       steps {
+         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/yarli9951/sample']]])
+     }
+     }
+
+     stage ('build')
+     {
+     steps {
+        script {
+          sh 'cd /opt/jenkins/workspace/session815-pipeline/my-app ; mvn clean'
+        }
+      }
+
+     }
+
+  }
+
+
+}

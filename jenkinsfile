@@ -4,10 +4,11 @@ pipeline
 
 parameters {
 
-booleanParam(name: 'checkout', defaultValue: false, description: '')
-booleanParam(name: 'build', defaultValue: false, description: '')
+booleanParam(name: 'checkout', defaultValue: true, description: '')
+booleanParam(name: 'build', defaultValue: true, description: '')
 choice(name: 'VERSION', choices: ['1.1', '1.2', '2.0'], description: '')
 string(name: 'Ticket_no', defaultValue: 'staging', description: '')
+booleanParam(name: 'non-regression', defaultValue: true, description: '')
 
 }
   stages {
@@ -28,7 +29,7 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
      stage ('build')
      {
           when {
-              expression { build ==~ true }
+              expression { non-regression ==~ true }
 
               }
 
@@ -39,6 +40,21 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
            }
 
         }
+
+        stage ('Non-regression')
+        {
+             when {
+                 expression { build ==~ true }
+
+                 }
+
+        steps {
+           script {
+             sh 'This is no-regression stage'
+                 }
+              }
+
+           }
 
   }
 

@@ -35,7 +35,7 @@ booleanParam(name: 'non-regression', defaultValue: true, description: '')
 
      steps {
         script {
-          sh 'cd /opt/jenkins/workspace/session815-pipeline/my-app ; mvn clean'
+          sh 'echo "this is build stage"'
               }
            }
 

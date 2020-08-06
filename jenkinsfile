@@ -29,7 +29,7 @@ booleanParam(name: 'non-regression', defaultValue: true, description: '')
      stage ('build')
      {
           when {
-              expression { non-regression ==~ true }
+              expression { build ==~ true }
 
               }
 
@@ -44,7 +44,7 @@ booleanParam(name: 'non-regression', defaultValue: true, description: '')
         stage ('Non-regression')
         {
              when {
-                 expression { build ==~ true }
+                 expression {  non-regression ==~ true }
 
                  }
 

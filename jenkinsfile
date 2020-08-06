@@ -5,6 +5,7 @@ pipeline
 parameters {
 
 booleanParam(name: 'checkout', defaultValue: false, description: '')
+booleanParam(name: 'build', defaultValue: false, description: '')
 choice(name: 'VERSION', choices: ['1.1', '1.2', '2.0'], description: '')
 string(name: 'Ticket_no', defaultValue: 'staging', description: '')
 
@@ -26,6 +27,13 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
 
      stage ('build')
      {
+       stage ('checkout')
+       {
+         when {
+              expression { build ==~ true }
+
+              }
+
      steps {
         script {
           sh 'cd /opt/jenkins/workspace/session815-pipeline/my-app ; mvn clean'

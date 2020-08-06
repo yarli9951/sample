@@ -14,6 +14,11 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
 
      stage ('checkout')
      {
+       when {
+                checkout 'true'
+                
+            }
+
        steps {
          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/yarli9951/sample']]])
      }

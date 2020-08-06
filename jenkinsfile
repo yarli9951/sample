@@ -27,9 +27,7 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
 
      stage ('build')
      {
-       stage ('checkout')
-       {
-         when {
+          when {
               expression { build ==~ true }
 
               }
@@ -45,5 +43,4 @@ string(name: 'Ticket_no', defaultValue: 'staging', description: '')
   }
 
 
-}
 }

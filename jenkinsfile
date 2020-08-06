@@ -41,21 +41,17 @@ booleanParam(name: 'nonregression', defaultValue: true, description: '')
 
         }
 
-        stage ('non-regression')
+        stage('nonregression')
         {
-             when {
-                 expression { nonregression ==~ true }
+            when {
+                expression { nonregression ==~ true }
+            }
+            steps
+            {
+              sh 'echo "this is nonregression"'
+            }
 
-                 }
-
-        steps {
-           script {
-             sh 'This is no-regression stage'
-                 }
-              }
-
-           }
-
+        }
   }
 
 

@@ -8,4 +8,8 @@ jobs:
       run: echo "this is a build"
     - name: sample steps
       run: echo "this is a job"
+    - name: sample
+      run: |
+        echo "this is a job"
+        echo "this is a sample"
        
